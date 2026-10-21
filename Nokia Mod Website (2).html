@@ -1,0 +1,1045 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOKIA MOD - Mod Game VIP Premium</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+        
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #0b0f17;
+            color: #e2e8f0;
+        }
+
+        .compact-card {
+            background: linear-gradient(180deg, rgba(22, 30, 46, 0.8) 0%, rgba(15, 23, 36, 0.95) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(8px);
+            transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .compact-card:hover {
+            border-color: rgba(56, 189, 248, 0.4);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px -6px rgba(0, 0, 0, 0.5), 0 0 15px -3px rgba(56, 189, 248, 0.15);
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, #38bdf8, #818cf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Custom subtle scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #0b0f17;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1e293b;
+            border-radius: 9999px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #334155;
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col justify-between selection:bg-sky-500/30 selection:text-sky-200">
+
+    <!-- Compact Header -->
+    <header class="w-full bg-[#0b0f17]/90 backdrop-blur-md sticky top-0 z-50 border-b border-slate-800/80 py-2.5 px-4 md:px-6">
+        <div class="max-w-6xl mx-auto flex justify-between items-center">
+            <!-- Brand & Logo -->
+            <div class="flex items-center gap-2.5">
+                <div class="relative group cursor-pointer" onclick="openAdminModal('avatar')">
+                    <div class="w-9 h-9 rounded-xl overflow-hidden border border-sky-400/50 shadow-sm relative bg-slate-900">
+                        <img id="siteAvatar" src="73671.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/38bdf8?text=NOKIA';" alt="NOKIA MOD Logo" class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-black/60 flex items-center justify-center opacity-0 group-hover:opacity-100 transition duration-150">
+                            <i class="fa-solid fa-camera text-sky-400 text-[10px]"></i>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h1 class="font-extrabold text-base tracking-tight flex items-center gap-1.5 leading-none">
+                        <span class="gradient-text">NOKIA MOD</span>
+                        <i class="fa-solid fa-circle-check text-sky-400 text-[11px]"></i>
+                    </h1>
+                    <p class="text-[9px] text-slate-400 font-semibold tracking-wider uppercase mt-0.5">Game VIP Android</p>
+                </div>
+            </div>
+
+            <!-- Header Quick Actions -->
+            <div class="flex items-center gap-1.5 sm:gap-2">
+                <button onclick="openAdminModal('general')" class="bg-slate-800/80 hover:bg-slate-800 text-amber-400 border border-amber-500/30 font-bold text-[11px] px-2.5 py-1.5 rounded-lg transition flex items-center gap-1">
+                    <i class="fa-solid fa-user-shield text-xs"></i> <span class="hidden sm:inline">ADMIN</span>
+                </button>
+                <a id="headerBuyKeyBtn" href="https://t.me/NGUYENAHTU" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-[11px] px-3 py-1.5 rounded-lg transition shadow-sm flex items-center gap-1.5">
+                    <i class="fa-solid fa-cart-shopping text-xs"></i> <span id="headerKeyPriceText">MUA KEY VIP</span>
+                </a>
+                <a href="https://t.me/NGUYENAHTU" target="_blank" class="bg-sky-600 hover:bg-sky-500 text-white font-bold text-[11px] px-2.5 py-1.5 rounded-lg transition shadow-sm flex items-center gap-1">
+                    <i class="fa-brands fa-telegram text-xs"></i> <span class="hidden md:inline">TELEGRAM</span>
+                </a>
+                <a href="https://tung.bet/GETKEY/nokia" target="_blank" class="bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-[11px] px-2.5 py-1.5 rounded-lg transition shadow-sm flex items-center gap-1">
+                    <i class="fa-solid fa-key text-xs"></i> <span class="hidden sm:inline">GETKEY FREE THEKING</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Modal Admin (Nhập PIN, Edit Card, Đổi Giá & Stats) -->
+    <div id="adminModal" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 overflow-y-auto">
+        <div class="bg-[#121824] border border-slate-700/80 rounded-2xl max-w-lg w-full p-5 relative shadow-2xl space-y-3 my-4">
+            <button onclick="closeAdminModal()" class="absolute top-3.5 right-3.5 text-slate-400 hover:text-white p-1">
+                <i class="fa-solid fa-xmark text-base"></i>
+            </button>
+
+            <!-- Bước 1: Nhập PIN -->
+            <div id="pinStep" class="space-y-3 text-center py-2">
+                <div class="w-10 h-10 bg-amber-500/10 text-amber-400 rounded-xl flex items-center justify-center mx-auto text-lg border border-amber-500/20">
+                    <i class="fa-solid fa-lock"></i>
+                </div>
+                <h3 class="text-base font-bold text-white">Quản Trị Admin</h3>
+                <p class="text-xs text-slate-400">Nhập mã PIN Admin để tùy chỉnh hệ thống</p>
+                <input type="password" id="pinInput" maxlength="6" placeholder="Nhập PIN Admin" class="w-full bg-slate-900 border border-slate-700 text-center text-white text-base tracking-widest rounded-xl py-2 focus:outline-none focus:border-amber-400">
+                <button onclick="verifyPin()" class="w-full bg-amber-500 hover:bg-amber-400 text-slate-950 font-extrabold py-2 rounded-xl transition text-xs">
+                    XÁC NHẬN PIN
+                </button>
+            </div>
+
+            <!-- Bước 2: Panel Quản Lý Admin Compact -->
+            <div id="adminPanel" class="space-y-3 hidden">
+                <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                    <h3 class="text-sm font-bold text-white flex items-center gap-1.5">
+                        <i class="fa-solid fa-sliders text-amber-400"></i> BẢNG ĐIỀU HÀNH ADMIN
+                    </h3>
+                    <span class="text-[9px] bg-amber-500/10 text-amber-400 px-2 py-0.5 rounded font-bold border border-amber-500/20">VERIFIED</span>
+                </div>
+
+                <!-- Admin Tab Nav -->
+                <div class="flex gap-1 border-b border-slate-800 pb-2 overflow-x-auto text-[11px]">
+                    <button id="tabBtnGame" onclick="switchAdminTab('game')" class="px-2.5 py-1 rounded-lg font-bold bg-sky-500 text-white transition whitespace-nowrap">Sửa Game</button>
+                    <button id="tabBtnPrice" onclick="switchAdminTab('price')" class="px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap">Giá Key</button>
+                    <button id="tabBtnAdd" onclick="switchAdminTab('add')" class="px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap">+ Thêm Mod</button>
+                    <button id="tabBtnAvatar" onclick="switchAdminTab('avatar')" class="px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap">Avatar</button>
+                    <button id="tabBtnStats" onclick="switchAdminTab('stats')" class="px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap">Stats Mod</button>
+                    <button id="tabBtnDailyStats" onclick="switchAdminTab('dailyStats')" class="px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap">Stats Ngày</button>
+                </div>
+
+                <!-- Tab: Sửa Game -->
+                <div id="tabGameContent" class="space-y-2.5 text-xs">
+                    <div>
+                        <label class="block text-[11px] text-slate-400 font-semibold mb-1">Chọn Game Cần Chỉnh:</label>
+                        <select id="gameSelect" onchange="loadGameToEdit()" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400"></select>
+                    </div>
+
+                    <div class="space-y-2">
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Tên Game Mod:</label>
+                            <input type="text" id="editGameTitle" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Giá Key Game (Hiển thị nút mua):</label>
+                            <input type="text" id="editGamePrice" placeholder="50K/Tháng" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Lượt Xem/Tương Tác Của Mod Này:</label>
+                            <input type="number" id="editGameViews" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Ảnh Game (URL / Upload):</label>
+                            <div class="flex gap-1.5">
+                                <input type="text" id="editGameImgUrl" placeholder="Link URL ảnh..." class="flex-1 bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                                <button onclick="document.getElementById('gameFileInput').click()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 px-2.5 rounded-lg text-[11px] font-bold">
+                                    <i class="fa-solid fa-upload"></i> Chọn File
+                                </button>
+                                <input type="file" id="gameFileInput" accept="image/*" class="hidden" onchange="handleGameImageUpload(event)">
+                            </div>
+                            <div class="h-20 w-full bg-slate-900 rounded-lg overflow-hidden border border-slate-800 mt-1.5 relative">
+                                <img id="editGameImgPreview" src="" class="w-full h-full object-cover">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Mô Tả Mod:</label>
+                            <textarea id="editGameDesc" rows="2" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400"></textarea>
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Link Tải Game (APK):</label>
+                            <input type="text" id="editGameDownloadUrl" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-amber-400 font-semibold">Link Tải APK Dự Phòng:</label>
+                            <input type="text" id="editGameBackupDownloadUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-amber-400">
+                        </div>
+                        <div class="flex gap-2 pt-1">
+                            <button onclick="saveGameCardEdit()" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold py-2 rounded-lg transition">LƯU CẬP NHẬT</button>
+                            <button onclick="deleteGameCard()" class="bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 font-bold px-3 py-2 rounded-lg transition"><i class="fa-solid fa-trash-can"></i> XÓA</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tab: Giá Key Admin -->
+                <div id="tabPriceContent" class="space-y-2 text-xs hidden">
+                    <div>
+                        <label class="block text-[10px] text-amber-400 font-bold mb-0.5">Tiêu Đề Nút Mua Key Header:</label>
+                        <input type="text" id="adminHeaderPriceText" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">Giá Key 1 Ngày:</label>
+                            <input type="text" id="priceKeyDay" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400 mb-0.5">Giá Key Tuần:</label>
+                            <input type="text" id="priceKeyWeek" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-0.5">Giá Key Tháng:</label>
+                        <input type="text" id="priceKeyMonth" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400 mb-0.5">Link Mua Key (Telegram/Zalo):</label>
+                        <input type="text" id="adminBuyKeyUrl" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <button onclick="saveKeyPrices()" class="w-full bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold py-2 rounded-lg transition mt-2">LƯU GIÁ KEY</button>
+                </div>
+
+                <!-- Tab: Thêm Game Mod Mới -->
+                <div id="tabAddContent" class="space-y-2 text-xs hidden">
+                    <div>
+                        <label class="block text-[10px] text-slate-400">Tên Game Mod Mới:</label>
+                        <input type="text" id="addGameTitle" placeholder="Nhập tên game..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <div class="grid grid-cols-2 gap-2">
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Giá Nút Mua:</label>
+                            <input type="text" id="addGamePrice" placeholder="50K/Tháng" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                        <div>
+                            <label class="block text-[10px] text-slate-400">Nhãn (Tag):</label>
+                            <input type="text" id="addGameTag" placeholder="HOT, NEW, VIP" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400">Ảnh Game (URL / Upload):</label>
+                        <div class="flex gap-1.5">
+                            <input type="text" id="addGameImgUrl" placeholder="Link ảnh URL..." class="flex-1 bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                            <button onclick="document.getElementById('addGameFileInput').click()" class="bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 px-2.5 rounded-lg text-[11px] font-bold">File</button>
+                            <input type="file" id="addGameFileInput" accept="image/*" class="hidden" onchange="handleAddGameImageUpload(event)">
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400">Mô Tả Mod:</label>
+                        <textarea id="addGameDesc" rows="2" placeholder="Chức năng mod..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400"></textarea>
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400">Link Tải Game (APK):</label>
+                        <input type="text" id="addGameDownloadUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-amber-400 font-semibold">Link Tải APK Dự Phòng:</label>
+                        <input type="text" id="addGameBackupDownloadUrl" placeholder="https://..." class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-amber-400">
+                    </div>
+                    <div>
+                        <label class="block text-[10px] text-slate-400">Link Get Key:</label>
+                        <input type="text" id="addGameKeyUrl" value="https://tung.bet/GETKEY/nokia" class="w-full bg-slate-900 border border-slate-700 text-white rounded-lg p-2 focus:outline-none focus:border-sky-400">
+                    </div>
+                    <button onclick="addNewGameCard()" class="w-full bg-sky-500 hover:bg-sky-600 text-white font-extrabold py-2 rounded-lg transition mt-1">+ THÊM GAME NÀY</button>
+                </div>
+
+                <!-- Tab: Avatar Web -->
+                <div id="tabAvatarContent" class="space-y-3 text-center text-xs hidden py-2">
+                    <div class="w-20 h-20 rounded-xl overflow-hidden border-2 border-sky-400 mx-auto shadow-md">
+                        <img id="previewAvatar" src="73671.png" onerror="this.onerror=null; this.src='https://placehold.co/100x100/0f172a/38bdf8?text=NOKIA';" class="w-full h-full object-cover">
+                    </div>
+                    <input type="file" id="siteFileInput" accept="image/*" class="hidden" onchange="previewSiteAvatar(event)">
+                    <div class="flex gap-2">
+                        <button onclick="document.getElementById('siteFileInput').click()" class="flex-1 bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 font-bold py-2 rounded-lg transition">Chọn Ảnh Mới</button>
+                        <button onclick="saveNewSiteAvatar()" class="flex-1 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-extrabold py-2 rounded-lg transition">Lưu Avatar</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Stats Chi Tiết Từng Mod -->
+                <div id="tabStatsContent" class="space-y-2.5 text-xs hidden">
+                    <div class="bg-slate-900 p-2.5 rounded-xl border border-slate-800 flex justify-between items-center">
+                        <span class="text-slate-400 font-semibold">Lượt Truy Cập Trang Web:</span>
+                        <span id="adminTotalViews" class="font-extrabold text-sky-400 text-sm">0</span>
+                    </div>
+
+                    <div class="border-t border-slate-800 pt-2">
+                        <h4 class="font-extrabold text-slate-300 text-[11px] mb-2 flex items-center gap-1">
+                            <i class="fa-solid fa-chart-simple text-amber-400"></i> LƯỢT TƯƠNG TÁC TƯỜNG MOD:
+                        </h4>
+                        <div id="modStatsList" class="space-y-1.5 max-h-48 overflow-y-auto pr-1">
+                            <!-- Injected by JS -->
+                        </div>
+                    </div>
+
+                    <div class="flex gap-2 pt-1">
+                        <button onclick="resetAllModViews()" class="flex-1 bg-amber-500/20 hover:bg-amber-500/30 text-amber-400 border border-amber-500/30 font-bold py-1.5 rounded-lg transition">Reset View Mod</button>
+                        <button onclick="resetViewCount()" class="flex-1 bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 font-bold py-1.5 rounded-lg transition">Reset View Web</button>
+                    </div>
+                </div>
+
+                <!-- Tab: Thống Kê View Theo Ngày -->
+                <div id="tabDailyStatsContent" class="space-y-2.5 text-xs hidden">
+                    <div class="grid grid-cols-2 gap-2">
+                        <div class="bg-slate-900 p-2 rounded-xl border border-slate-800 text-center">
+                            <span class="text-[10px] text-slate-400 font-medium block">Hôm Nay</span>
+                            <span id="adminTodayViews" class="font-extrabold text-emerald-400 text-sm">0</span>
+                        </div>
+                        <div class="bg-slate-900 p-2 rounded-xl border border-slate-800 text-center">
+                            <span class="text-[10px] text-slate-400 font-medium block">Tổng Cộng</span>
+                            <span id="adminTotalViewsDaily" class="font-extrabold text-sky-400 text-sm">0</span>
+                        </div>
+                    </div>
+
+                    <div class="border-t border-slate-800 pt-2">
+                        <h4 class="font-extrabold text-slate-300 text-[11px] mb-2 flex items-center gap-1">
+                            <i class="fa-solid fa-calendar-days text-sky-400"></i> BẢNG THỐNG KÊ LƯỢT VIEW THEO NGÀY
+                        </h4>
+                        <div class="bg-slate-900/80 rounded-xl border border-slate-800 overflow-hidden">
+                            <div class="grid grid-cols-3 bg-slate-800/80 p-2 font-bold text-slate-300 text-[10px] border-b border-slate-700">
+                                <span>NGÀY</span>
+                                <span class="text-center">TƯƠNG TÁC MOD</span>
+                                <span class="text-right">LƯỢT VIEW</span>
+                            </div>
+                            <div id="dailyStatsTable" class="max-h-40 overflow-y-auto divide-y divide-slate-800 text-[11px]">
+                                <!-- Injected by JS -->
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="pt-1">
+                        <button onclick="resetDailyStats()" class="w-full bg-rose-500/20 hover:bg-rose-500/30 text-rose-400 border border-rose-500/30 font-bold py-1.5 rounded-lg transition text-xs">
+                            <i class="fa-solid fa-rotate-left"></i> Clear Lịch Sử Thống Kê Ngày
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Compact Mini Banner & Public Prices -->
+    <section class="max-w-6xl mx-auto w-full px-3 md:px-6 pt-3 space-y-3">
+        <!-- Compact Hero Banner -->
+        <div class="bg-gradient-to-r from-sky-950/40 via-slate-900 to-indigo-950/40 border border-slate-800/80 rounded-2xl p-3.5 md:p-4 flex flex-col sm:flex-row items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-xl bg-sky-500/10 border border-sky-500/20 text-sky-400 flex items-center justify-center shrink-0">
+                    <i class="fa-solid fa-shield-halved text-lg"></i>
+                </div>
+                <div>
+                    <h2 class="text-sm sm:text-base font-extrabold text-white leading-snug">
+                        Nền Tảng Menu Mod Game Android <span class="gradient-text">Anti-Ban 100%</span>
+                    </h2>
+                    <p class="text-[11px] text-slate-400">Bảo mật cao, tự động cập nhật phiên bản mới liên tục.</p>
+                </div>
+            </div>
+            <a href="#game-list" class="bg-slate-800 hover:bg-slate-700 text-xs font-bold text-slate-200 border border-slate-700 px-3 py-1.5 rounded-lg whitespace-nowrap transition">
+                <i class="fa-solid fa-angles-down text-sky-400 mr-1"></i> Xem Game Mod
+            </a>
+        </div>
+
+        <!-- Mini Stats & Price Bar -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-xs">
+            <!-- Key Ngày -->
+            <div class="bg-[#121824] border border-slate-800/80 p-2.5 rounded-xl flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 font-medium">Key 1 Ngày</span>
+                <span id="dispKeyDay" class="font-extrabold text-emerald-400 text-xs">10.000 VNĐ</span>
+            </div>
+            <!-- Key Tuần -->
+            <div class="bg-[#121824] border border-slate-800/80 p-2.5 rounded-xl flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 font-medium">Key 7 Ngày</span>
+                <span id="dispKeyWeek" class="font-extrabold text-emerald-400 text-xs">50.000 VNĐ</span>
+            </div>
+            <!-- Key Tháng -->
+            <div class="bg-[#121824] border border-slate-800/80 p-2.5 rounded-xl flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 font-medium">Key 30 Ngày</span>
+                <span id="dispKeyMonth" class="font-extrabold text-emerald-400 text-xs">150.000 VNĐ</span>
+            </div>
+            <!-- Total Views Badge -->
+            <div class="bg-[#121824] border border-slate-800/80 p-2.5 rounded-xl flex items-center justify-between">
+                <span class="text-[11px] text-slate-400 font-medium flex items-center gap-1">
+                    <i class="fa-solid fa-eye text-sky-400 text-[10px]"></i> Lượt xem
+                </span>
+                <span id="statViews" class="font-extrabold text-sky-400 text-xs">0</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Streamlined Game Cards Catalog -->
+    <main id="game-list" class="max-w-6xl mx-auto w-full px-3 md:px-6 py-4 flex-grow">
+        <div class="flex items-center justify-between mb-3">
+            <h3 class="text-sm font-extrabold text-white flex items-center gap-1.5 tracking-tight uppercase">
+                <i class="fa-solid fa-fire text-orange-500"></i> DANH SÁCH GAME MOD
+            </h3>
+            <span class="text-[10px] bg-slate-800/80 text-slate-400 px-2 py-0.5 rounded border border-slate-700/60 font-semibold">
+                <span id="statGames">0</span> BẢN MOD
+            </span>
+        </div>
+
+        <div id="cardsGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3.5">
+            <!-- Game cards injected by JS -->
+        </div>
+    </main>
+
+    <!-- Compact Footer -->
+    <footer class="w-full bg-[#0b0f17] border-t border-slate-800/80 py-3 text-center text-[11px] text-slate-500 flex flex-col sm:flex-row items-center justify-between max-w-6xl mx-auto px-4 gap-2">
+        <p class="font-medium">© NOKIA MOD - Game Mod VIP Android</p>
+        <a href="https://t.me/NGUYENAHTU" target="_blank" class="text-sky-400 hover:underline flex items-center gap-1 font-semibold">
+            <i class="fa-brands fa-telegram"></i> Hỗ trợ Telegram: @NGUYENAHTU
+        </a>
+    </footer>
+
+    <script>
+        const ADMIN_PIN = "872010";
+        let isAuthorized = false;
+        let tempAvatarData = "";
+        let tempGameImageData = "";
+        let tempAddGameImageData = "";
+
+        // Lấy chuỗi ngày YYYY-MM-DD
+        function getTodayDateString() {
+            const today = new Date();
+            const year = today.getFullYear();
+            const month = String(today.getMonth() + 1).padStart(2, '0');
+            const day = String(today.getDate()).padStart(2, '0');
+            return `${year}-${month}-${day}`;
+        }
+
+        // Lấy lịch sử view theo ngày
+        function getDailyStatsData() {
+            const saved = localStorage.getItem('nokia_mod_daily_stats');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return {}; }
+            }
+            return {};
+        }
+
+        function saveDailyStatsData(data) {
+            localStorage.setItem('nokia_mod_daily_stats', JSON.stringify(data));
+        }
+
+        function recordDailyView(type = 'pageView') {
+            const dateStr = getTodayDateString();
+            const stats = getDailyStatsData();
+
+            if (!stats[dateStr]) {
+                stats[dateStr] = { pageViews: 0, modClicks: 0 };
+            }
+
+            if (type === 'pageView') {
+                stats[dateStr].pageViews = (stats[dateStr].pageViews || 0) + 1;
+            } else if (type === 'modClick') {
+                stats[dateStr].modClicks = (stats[dateStr].modClicks || 0) + 1;
+            }
+
+            saveDailyStatsData(stats);
+        }
+
+        const defaultPriceConfig = {
+            headerText: "MUA KEY VIP",
+            keyDay: "10.000 VNĐ",
+            keyWeek: "50.000 VNĐ",
+            keyMonth: "150.000 VNĐ",
+            buyUrl: "https://t.me/NGUYENAHTU"
+        };
+
+        function getPriceConfig() {
+            const saved = localStorage.getItem('nokia_mod_price_config');
+            if (saved) {
+                try { return JSON.parse(saved); } catch (e) { return defaultPriceConfig; }
+            }
+            return defaultPriceConfig;
+        }
+
+        function renderPrices() {
+            const cfg = getPriceConfig();
+            document.getElementById('headerKeyPriceText').innerText = cfg.headerText || "MUA KEY VIP";
+            document.getElementById('headerBuyKeyBtn').href = cfg.buyUrl || "https://t.me/NGUYENAHTU";
+
+            document.getElementById('dispKeyDay').innerText = cfg.keyDay || "10.000 VNĐ";
+            document.getElementById('dispKeyWeek').innerText = cfg.keyWeek || "50.000 VNĐ";
+            document.getElementById('dispKeyMonth').innerText = cfg.keyMonth || "150.000 VNĐ";
+
+            document.getElementById('adminHeaderPriceText').value = cfg.headerText || "MUA KEY VIP";
+            document.getElementById('priceKeyDay').value = cfg.keyDay || "10.000 VNĐ";
+            document.getElementById('priceKeyWeek').value = cfg.keyWeek || "50.000 VNĐ";
+            document.getElementById('priceKeyMonth').value = cfg.keyMonth || "150.000 VNĐ";
+            document.getElementById('adminBuyKeyUrl').value = cfg.buyUrl || "https://t.me/NGUYENAHTU";
+        }
+
+        function saveKeyPrices() {
+            const cfg = {
+                headerText: document.getElementById('adminHeaderPriceText').value.trim() || "MUA KEY VIP",
+                keyDay: document.getElementById('priceKeyDay').value.trim() || "10.000 VNĐ",
+                keyWeek: document.getElementById('priceKeyWeek').value.trim() || "50.000 VNĐ",
+                keyMonth: document.getElementById('priceKeyMonth').value.trim() || "150.000 VNĐ",
+                buyUrl: document.getElementById('adminBuyKeyUrl').value.trim() || "https://t.me/NGUYENAHTU"
+            };
+
+            localStorage.setItem('nokia_mod_price_config', JSON.stringify(cfg));
+            renderPrices();
+            alert("Đã cập nhật bảng giá Key!");
+            closeAdminModal();
+        }
+
+        function compressImage(base64Str, maxWidth, maxHeight, quality, callback) {
+            const img = new Image();
+            img.src = base64Str;
+            img.onload = function() {
+                let width = img.width;
+                let height = img.height;
+
+                if (width > maxWidth) {
+                    height = Math.round((height * maxWidth) / width);
+                    width = maxWidth;
+                }
+                if (height > maxHeight) {
+                    width = Math.round((width * maxHeight) / height);
+                    height = maxHeight;
+                }
+
+                const canvas = document.createElement('canvas');
+                canvas.width = width;
+                canvas.height = height;
+                const ctx = canvas.getContext('2d');
+                ctx.drawImage(img, 0, 0, width, height);
+
+                const compressedBase64 = canvas.toDataURL('image/jpeg', quality);
+                callback(compressedBase64);
+            };
+            img.onerror = function() {
+                callback(base64Str);
+            };
+        }
+
+        function initViewCounter() {
+            let views = parseInt(localStorage.getItem('nokia_mod_views') || '0');
+            views += 1;
+            localStorage.setItem('nokia_mod_views', views.toString());
+            
+            // Ghi nhận view hôm nay
+            recordDailyView('pageView');
+
+            const formattedViews = views.toLocaleString('vi-VN');
+            document.getElementById('statViews').innerText = formattedViews;
+            document.getElementById('adminTotalViews').innerText = formattedViews;
+        }
+
+        const defaultGames = [
+            {
+                id: "pubg",
+                title: "PUBG MOBILE MOD",
+                desc: "Menu Chiến Đấu, ESP Vẽ Hộp, AimBot, Khung Xương, Cảnh Báo Kẻ Thù. Hỗ trợ Android.",
+                img: "73855_2.jpg",
+                price: "50K/Tháng",
+                tag: "HOT",
+                tagBg: "bg-red-500",
+                downloadUrl: "https://api.tung.bet/PUBG.apk",
+                backupDownloadUrl: "https://www.mediafire.com/file/pubg_backup.apk/file",
+                keyUrl: "https://tung.bet/GETKEY/nokia",
+                views: 0
+            },
+            {
+                id: "lq",
+                title: "MENU LIÊN QUÂN 09 TEAM",
+                desc: "Unlock Skin, Mod Skin, Fake Profile, Custom Thông Báo Kill & Nút.",
+                img: "73940.jpg",
+                price: "MUA KEY VIP",
+                tag: "VIP",
+                tagBg: "bg-indigo-500",
+                downloadUrl: "https://www.mediafire.com/file/o0z0h4goez7inqk/09+AOV+ESP+v1.apk/file",
+                backupDownloadUrl: "https://drive.google.com/file/d/lq_backup/view",
+                keyUrl: "https://tung.bet/GETKEY/nokia",
+                views: 0
+            },
+            {
+                id: "bloodstrike",
+                title: "BLOOD STRIKE V2",
+                desc: "Menu hỗ trợ ngắm, tự động bắn, hiển thị vị trí địch.",
+                img: "https://placehold.co/600x350/0f172a/f43f5e?text=BLOOD+STRIKE+V2",
+                price: "20K/Tuần",
+                tag: "FREE",
+                tagBg: "bg-emerald-500",
+                downloadUrl: "https://tung.bet/GETKEY/nokia",
+                backupDownloadUrl: "",
+                keyUrl: "https://tung.bet/GETKEY/nokia",
+                views: 0
+            },
+            {
+                id: "proxy",
+                title: "PROXY V3 ANTI-BAN",
+                desc: "Công cụ fake IP, giảm ping và bảo vệ tài khoản.",
+                img: "https://placehold.co/600x350/0f172a/38bdf8?text=PROXY+V3",
+                price: "MIỄN PHÍ",
+                tag: "TOOL",
+                tagBg: "bg-sky-500",
+                downloadUrl: "https://tung.bet/GETKEY/nokia",
+                backupDownloadUrl: "",
+                keyUrl: "https://tung.bet/GETKEY/nokia",
+                views: 0
+            }
+        ];
+
+        let gamesData = [];
+
+        function getSavedGames() {
+            const saved = localStorage.getItem('nokia_mod_games');
+            if (saved) {
+                try { 
+                    const parsed = JSON.parse(saved);
+                    return parsed.map(g => ({ ...g, views: g.views || 0, backupDownloadUrl: g.backupDownloadUrl || "" }));
+                } catch (e) { return defaultGames; }
+            }
+            return defaultGames;
+        }
+
+        function trackModClick(gameId) {
+            const gameIndex = gamesData.findIndex(g => g.id === gameId);
+            if (gameIndex !== -1) {
+                gamesData[gameIndex].views = (gamesData[gameIndex].views || 0) + 1;
+                localStorage.setItem('nokia_mod_games', JSON.stringify(gamesData));
+                
+                // Ghi nhận click tương tác mod cho ngày hôm nay
+                recordDailyView('modClick');
+
+                // Update badge trên card
+                const viewBadge = document.getElementById(`viewBadge_${gameId}`);
+                if (viewBadge) {
+                    viewBadge.innerText = gamesData[gameIndex].views.toLocaleString('vi-VN');
+                }
+            }
+        }
+
+        function renderGames() {
+            gamesData = getSavedGames();
+            const cfg = getPriceConfig();
+            const grid = document.getElementById('cardsGrid');
+            grid.innerHTML = '';
+
+            gamesData.forEach((game) => {
+                const priceBtnText = game.price || "MUA KEY VIP";
+                const modViews = (game.views || 0).toLocaleString('vi-VN');
+                const cardHtml = `
+                    <div class="compact-card rounded-xl overflow-hidden flex flex-col justify-between relative group">
+                        <button onclick="openAdminModalForGame('${game.id}')" class="absolute top-2 left-2 bg-amber-500/90 hover:bg-amber-400 text-slate-950 font-extrabold text-[9px] px-2 py-0.5 rounded z-20 transition shadow">
+                            <i class="fa-solid fa-pen"></i> SỬA
+                        </button>
+                        <div>
+                            <div class="relative h-32 w-full overflow-hidden bg-slate-900 border-b border-slate-800/80">
+                                <img src="${game.img}" onerror="this.onerror=null; this.src='https://placehold.co/600x350/0f172a/38bdf8?text=GAME+MOD';" alt="${game.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300">
+                                <span class="absolute top-2 right-2 ${game.tagBg || 'bg-sky-500'} text-white text-[9px] font-extrabold px-2 py-0.5 rounded uppercase shadow">
+                                    ${game.tag || 'MOD'}
+                                </span>
+                                <!-- Badge Thống Kê View Từng Mod -->
+                                <span class="absolute bottom-1.5 right-2 bg-black/70 backdrop-blur-md text-sky-400 border border-sky-500/30 text-[9px] font-bold px-1.5 py-0.5 rounded flex items-center gap-1 shadow">
+                                    <i class="fa-solid fa-eye text-[8px]"></i> <span id="viewBadge_${game.id}">${modViews}</span>
+                                </span>
+                            </div>
+                            <div class="p-3 space-y-1.5">
+                                <h4 class="font-extrabold text-sm text-white group-hover:text-sky-400 transition leading-tight">${game.title}</h4>
+                                <p class="text-[11px] text-slate-400 leading-snug line-clamp-2">${game.desc}</p>
+                            </div>
+                        </div>
+                        <div class="p-3 pt-0 flex flex-col gap-1.5">
+                            <div class="flex gap-1.5">
+                                <a href="${game.downloadUrl}" target="_blank" onclick="trackModClick('${game.id}')" class="flex-1 bg-sky-600 hover:bg-sky-500 text-white font-bold text-[11px] py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-download text-[10px]"></i> TẢI APK
+                                </a>
+                                <a href="${game.keyUrl}" target="_blank" onclick="trackModClick('${game.id}')" class="bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700 font-bold text-[11px] px-2.5 py-1.5 rounded-lg transition flex items-center justify-center gap-1">
+                                    <i class="fa-solid fa-key text-amber-400 text-[10px]"></i> GETKEY FREE THEKING
+                                </a>
+                            </div>
+                            ${game.backupDownloadUrl ? `
+                            <a href="${game.backupDownloadUrl}" target="_blank" onclick="trackModClick('${game.id}')" class="w-full bg-amber-600/90 hover:bg-amber-500 text-slate-950 font-extrabold text-[11px] py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-cloud-arrow-down text-[10px]"></i> TẢI APK DỰ PHÒNG
+                            </a>
+                            ` : ''}
+                            <a href="${cfg.buyUrl || 'https://t.me/NGUYENAHTU'}" target="_blank" onclick="trackModClick('${game.id}')" class="w-full bg-emerald-600/90 hover:bg-emerald-500 text-white font-extrabold text-[11px] py-1.5 rounded-lg text-center transition flex items-center justify-center gap-1">
+                                <i class="fa-solid fa-cart-shopping text-[10px]"></i> ${priceBtnText}
+                            </a>
+                        </div>
+                    </div>
+                `;
+                grid.innerHTML += cardHtml;
+            });
+
+            document.getElementById('statGames').innerText = gamesData.length;
+            populateGameSelect();
+            renderAdminStats();
+            renderDailyStatsTable();
+        }
+
+        function populateGameSelect() {
+            const select = document.getElementById('gameSelect');
+            select.innerHTML = '';
+            gamesData.forEach(g => {
+                const opt = document.createElement('option');
+                opt.value = g.id;
+                opt.innerText = g.title;
+                select.appendChild(opt);
+            });
+            if (gamesData.length > 0) {
+                loadGameToEdit();
+            }
+        }
+
+        function renderAdminStats() {
+            const list = document.getElementById('modStatsList');
+            if (!list) return;
+            list.innerHTML = '';
+
+            gamesData.forEach(g => {
+                const views = (g.views || 0).toLocaleString('vi-VN');
+                list.innerHTML += `
+                    <div class="bg-slate-900/90 p-2 rounded-lg border border-slate-800 flex justify-between items-center text-[11px]">
+                        <span class="text-slate-300 font-medium truncate max-w-[180px]">${g.title}</span>
+                        <span class="font-extrabold text-amber-400">${views} views</span>
+                    </div>
+                `;
+            });
+        }
+
+        function renderDailyStatsTable() {
+            const tableContainer = document.getElementById('dailyStatsTable');
+            if (!tableContainer) return;
+
+            const dailyStats = getDailyStatsData();
+            const dates = Object.keys(dailyStats).sort().reverse();
+            const todayStr = getTodayDateString();
+
+            let totalWebViews = 0;
+            let todayViews = 0;
+
+            if (dates.length === 0) {
+                tableContainer.innerHTML = `
+                    <div class="p-3 text-center text-slate-500 text-[11px]">Chưa có dữ liệu thống kê theo ngày.</div>
+                `;
+            } else {
+                tableContainer.innerHTML = '';
+                dates.forEach(date => {
+                    const data = dailyStats[date];
+                    const pageViews = data.pageViews || 0;
+                    const modClicks = data.modClicks || 0;
+                    totalWebViews += pageViews;
+
+                    if (date === todayStr) {
+                        todayViews = pageViews;
+                    }
+
+                    const isToday = (date === todayStr);
+                    tableContainer.innerHTML += `
+                        <div class="grid grid-cols-3 p-2 items-center ${isToday ? 'bg-sky-950/40 font-bold text-sky-300' : 'text-slate-300'}">
+                            <span class="flex items-center gap-1 text-[10px]">
+                                ${isToday ? '<i class="fa-solid fa-circle text-[7px] text-emerald-400 animate-pulse"></i>' : ''}
+                                ${date}
+                            </span>
+                            <span class="text-center font-bold text-amber-400">${modClicks.toLocaleString('vi-VN')}</span>
+                            <span class="text-right font-extrabold text-sky-400">${pageViews.toLocaleString('vi-VN')}</span>
+                        </div>
+                    `;
+                });
+            }
+
+            document.getElementById('adminTodayViews').innerText = todayViews.toLocaleString('vi-VN');
+            document.getElementById('adminTotalViewsDaily').innerText = totalWebViews.toLocaleString('vi-VN');
+        }
+
+        function resetDailyStats() {
+            if (confirm("Bạn có chắc muốn xóa toàn bộ lịch sử thống kê theo ngày không?")) {
+                localStorage.removeItem('nokia_mod_daily_stats');
+                renderDailyStatsTable();
+                alert("Đã xóa lịch sử thống kê ngày!");
+            }
+        }
+
+        function handleGameImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    compressImage(e.target.result, 800, 500, 0.75, function(compressed) {
+                        tempGameImageData = compressed;
+                        document.getElementById('editGameImgPreview').src = compressed;
+                        document.getElementById('editGameImgUrl').value = "";
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function handleAddGameImageUpload(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    compressImage(e.target.result, 800, 500, 0.75, function(compressed) {
+                        tempAddGameImageData = compressed;
+                        document.getElementById('addGameImgUrl').value = "File ảnh đã chọn";
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function addNewGameCard() {
+            const title = document.getElementById('addGameTitle').value.trim();
+            const price = document.getElementById('addGamePrice').value.trim() || "MUA KEY VIP";
+            const desc = document.getElementById('addGameDesc').value.trim();
+            const downloadUrl = document.getElementById('addGameDownloadUrl').value.trim();
+            const backupDownloadUrl = document.getElementById('addGameBackupDownloadUrl').value.trim();
+            const keyUrl = document.getElementById('addGameKeyUrl').value.trim() || "https://tung.bet/GETKEY/nokia";
+            const tag = document.getElementById('addGameTag').value.trim() || "NEW";
+            const inputImgUrl = document.getElementById('addGameImgUrl').value.trim();
+
+            if (!title || !downloadUrl) {
+                alert("Vui lòng nhập Tên Game và Link Tải Game!");
+                return;
+            }
+
+            let imgSrc = "https://placehold.co/600x350/0f172a/38bdf8?text=" + encodeURIComponent(title);
+            if (tempAddGameImageData) {
+                imgSrc = tempAddGameImageData;
+            } else if (inputImgUrl && inputImgUrl !== "File ảnh đã chọn") {
+                imgSrc = inputImgUrl;
+            }
+
+            const newGame = {
+                id: "mod_" + Date.now(),
+                title: title,
+                desc: desc || "Cập nhật các chức năng mod mới nhất...",
+                img: imgSrc,
+                price: price,
+                tag: tag,
+                tagBg: "bg-sky-500",
+                downloadUrl: downloadUrl,
+                backupDownloadUrl: backupDownloadUrl,
+                keyUrl: keyUrl,
+                views: 0
+            };
+
+            gamesData.push(newGame);
+
+            try {
+                localStorage.setItem('nokia_mod_games', JSON.stringify(gamesData));
+                renderGames();
+                
+                document.getElementById('addGameTitle').value = "";
+                document.getElementById('addGamePrice').value = "";
+                document.getElementById('addGameDesc').value = "";
+                document.getElementById('addGameDownloadUrl').value = "";
+                document.getElementById('addGameBackupDownloadUrl').value = "";
+                document.getElementById('addGameTag').value = "";
+                document.getElementById('addGameImgUrl').value = "";
+                tempAddGameImageData = "";
+
+                alert("Đã thêm Mod Game mới!");
+                closeAdminModal();
+            } catch (err) {
+                alert("Ảnh chọn có dung lượng quá lớn, vui lòng dùng Link URL!");
+            }
+        }
+
+        function loadGameToEdit() {
+            const gameId = document.getElementById('gameSelect').value;
+            const game = gamesData.find(g => g.id === gameId);
+            if (game) {
+                document.getElementById('editGameTitle').value = game.title;
+                document.getElementById('editGamePrice').value = game.price || "MUA KEY VIP";
+                document.getElementById('editGameViews').value = game.views || 0;
+                document.getElementById('editGameImgUrl').value = game.img;
+                document.getElementById('editGameImgPreview').src = game.img;
+                document.getElementById('editGameDesc').value = game.desc;
+                document.getElementById('editGameDownloadUrl').value = game.downloadUrl;
+                document.getElementById('editGameBackupDownloadUrl').value = game.backupDownloadUrl || "";
+                tempGameImageData = "";
+            }
+        }
+
+        function saveGameCardEdit() {
+            const gameId = document.getElementById('gameSelect').value;
+            const gameIndex = gamesData.findIndex(g => g.id === gameId);
+
+            if (gameIndex !== -1) {
+                const newTitle = document.getElementById('editGameTitle').value.trim();
+                const newPrice = document.getElementById('editGamePrice').value.trim();
+                const newViews = parseInt(document.getElementById('editGameViews').value) || 0;
+                const newDesc = document.getElementById('editGameDesc').value.trim();
+                const newUrl = document.getElementById('editGameDownloadUrl').value.trim();
+                const newBackupUrl = document.getElementById('editGameBackupDownloadUrl').value.trim();
+                const inputImgUrl = document.getElementById('editGameImgUrl').value.trim();
+
+                gamesData[gameIndex].title = newTitle || gamesData[gameIndex].title;
+                gamesData[gameIndex].price = newPrice || "MUA KEY VIP";
+                gamesData[gameIndex].views = newViews >= 0 ? newViews : 0;
+                gamesData[gameIndex].desc = newDesc || gamesData[gameIndex].desc;
+                gamesData[gameIndex].downloadUrl = newUrl || gamesData[gameIndex].downloadUrl;
+                gamesData[gameIndex].backupDownloadUrl = newBackupUrl;
+
+                if (tempGameImageData) {
+                    gamesData[gameIndex].img = tempGameImageData;
+                } else if (inputImgUrl) {
+                    gamesData[gameIndex].img = inputImgUrl;
+                }
+
+                try {
+                    localStorage.setItem('nokia_mod_games', JSON.stringify(gamesData));
+                    renderGames();
+                    alert("Đã cập nhật game!");
+                    closeAdminModal();
+                } catch (err) {
+                    alert("Lỗi lưu dữ liệu: Ảnh quá lớn!");
+                }
+            }
+        }
+
+        function deleteGameCard() {
+            const gameId = document.getElementById('gameSelect').value;
+            const game = gamesData.find(g => g.id === gameId);
+            if (game && confirm(`Bạn có chắc chắn muốn XÓA bản mod "${game.title}"?`)) {
+                gamesData = gamesData.filter(g => g.id !== gameId);
+                localStorage.setItem('nokia_mod_games', JSON.stringify(gamesData));
+                renderGames();
+                alert("Đã xóa bản mod!");
+                closeAdminModal();
+            }
+        }
+
+        function previewSiteAvatar(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    compressImage(e.target.result, 400, 400, 0.8, function(compressed) {
+                        tempAvatarData = compressed;
+                        document.getElementById('previewAvatar').src = compressed;
+                    });
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        function saveNewSiteAvatar() {
+            if (tempAvatarData) {
+                try {
+                    document.getElementById('siteAvatar').src = tempAvatarData;
+                    localStorage.setItem('nokia_mod_avatar', tempAvatarData);
+                    alert("Đã thay đổi Avatar Web!");
+                    closeAdminModal();
+                } catch (err) {
+                    alert("Ảnh avatar dung lượng quá lớn!");
+                }
+            } else {
+                alert("Chọn ảnh trước!");
+            }
+        }
+
+        function loadSiteAvatar() {
+            const savedAvatar = localStorage.getItem('nokia_mod_avatar');
+            if (savedAvatar) {
+                document.getElementById('siteAvatar').src = savedAvatar;
+                document.getElementById('previewAvatar').src = savedAvatar;
+            }
+        }
+
+        function openAdminModal(tabName = 'general') {
+            document.getElementById('adminModal').classList.remove('hidden');
+            if (isAuthorized) {
+                document.getElementById('pinStep').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                switchAdminTab(tabName === 'avatar' ? 'avatar' : 'game');
+            } else {
+                document.getElementById('pinStep').classList.remove('hidden');
+                document.getElementById('adminPanel').classList.add('hidden');
+                document.getElementById('pinInput').focus();
+            }
+        }
+
+        function openAdminModalForGame(gameId) {
+            openAdminModal('game');
+            if (isAuthorized) {
+                document.getElementById('gameSelect').value = gameId;
+                loadGameToEdit();
+            }
+        }
+
+        function closeAdminModal() {
+            document.getElementById('adminModal').classList.add('hidden');
+            document.getElementById('pinInput').value = '';
+        }
+
+        function verifyPin() {
+            const input = document.getElementById('pinInput').value;
+            if (input === ADMIN_PIN) {
+                isAuthorized = true;
+                document.getElementById('pinStep').classList.add('hidden');
+                document.getElementById('adminPanel').classList.remove('hidden');
+                switchAdminTab('game');
+            } else {
+                alert('Mã PIN không đúng!');
+                document.getElementById('pinInput').value = '';
+            }
+        }
+
+        function switchAdminTab(tab) {
+            const tabs = ['game', 'price', 'add', 'avatar', 'stats', 'dailyStats'];
+            tabs.forEach(t => {
+                const btn = document.getElementById('tabBtn' + t.charAt(0).toUpperCase() + t.slice(1));
+                const content = document.getElementById('tab' + t.charAt(0).toUpperCase() + t.slice(1) + 'Content');
+                
+                if (t === tab) {
+                    if (btn) {
+                        btn.className = "px-2.5 py-1 rounded-lg font-bold bg-sky-500 text-white transition whitespace-nowrap";
+                    }
+                    if (content) content.classList.remove('hidden');
+                } else {
+                    if (btn) {
+                        btn.className = "px-2.5 py-1 rounded-lg font-bold bg-slate-800 text-slate-400 hover:text-white transition whitespace-nowrap";
+                    }
+                    if (content) content.classList.add('hidden');
+                }
+            });
+
+            if (tab === 'stats') {
+                renderAdminStats();
+            } else if (tab === 'dailyStats') {
+                renderDailyStatsTable();
+            }
+        }
+
+        function resetAllModViews() {
+            if (confirm("Reset lượt tương tác của tất cả các Mod về 0?")) {
+                gamesData.forEach(g => g.views = 0);
+                localStorage.setItem('nokia_mod_games', JSON.stringify(gamesData));
+                renderGames();
+                alert("Đã reset lượt view các bản Mod!");
+            }
+        }
+
+        function resetViewCount() {
+            if (confirm("Đặt lại lượt truy cập trang web về 0?")) {
+                localStorage.setItem('nokia_mod_views', '0');
+                document.getElementById('statViews').innerText = "0";
+                document.getElementById('adminTotalViews').innerText = "0";
+                alert("Đã reset!");
+            }
+        }
+
+        // Khởi chạy ứng dụng
+        window.onload = function() {
+            initViewCounter();
+            renderPrices();
+            loadSiteAvatar();
+            renderGames();
+        };
+    </script>
+</body>
+</html>
